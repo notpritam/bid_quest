@@ -1,6 +1,20 @@
 import React from "react";
 
-const FeaturedAuction = () => {
+async function getData() {
+  const res = await fetch("https://jsonplaceholder.typicode.com/posts", {
+    next: { revalidate: 20 },
+  });
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch data");
+  }
+
+  return res.json();
+}
+
+const FeaturedAuction = async () => {
+  const data = await getData();
+
   const categories = [
     {
       categoryName: "Nature",

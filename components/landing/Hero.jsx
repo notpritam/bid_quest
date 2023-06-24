@@ -11,7 +11,6 @@ const Hero = () => {
     } else if (theme === "dark") {
       return url + "_dark." + extension;
     }
-    // If theme is not 'light' or 'dark', you can provide a fallback image path here.
     return url + "." + extension;
   };
   return (
