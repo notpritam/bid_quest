@@ -4,23 +4,14 @@ const { Schema } = mongoose;
 
 const userSchema = new Schema(
   {
-    name: {
-      type: String,
-
-      required: true,
-    },
-    email: {
-      type: String,
-
-      required: true,
-    },
-    password: {
-      type: String,
-
-      required: true,
-    },
+    userId: { type: Schema.Types.ObjectId, auto: true },
+    name: String,
+    email: { type: String, unique: true },
+    password: { type: String, minlength: 8 },
+    status: { type: String, enum: ["Active", "Inactive"] },
+    profileImage: String,
   },
   { timestamps: true }
 );
 
-export default mongoose.model("User", userSchema);
+export default mongoose.model("Users", userSchema);
